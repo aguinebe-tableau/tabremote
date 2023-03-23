@@ -1,0 +1,20 @@
+FROM node:latest
+
+#update environment
+RUN apt-get -y upgrade
+RUN apt-get -y update
+RUN apt-get -y --with-new-pkgs upgrade
+RUN apt-get -y autoremove
+
+# Regular node build
+RUN mkdir /nextapp
+RUN mkdir /nextapp/tabremote
+WORKDIR /nextapp/tabremote
+COPY tabremote/package*.json ./
+RUN npm install
+RUN npm install nodemon -g
+WORKDIR /nextapp
+COPY . .
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
