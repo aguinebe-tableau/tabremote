@@ -29,5 +29,5 @@ services:
     volumes:
       - ./nextapp:/nextapp
     environment:
-      # - DEVELOPMENT=true
+      - DEVELOPMENT=true
       - PORT=3000

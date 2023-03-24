@@ -13,6 +13,7 @@ WORKDIR /nextapp/tabremote
 COPY tabremote/package*.json ./
 RUN npm install
 RUN npm install nodemon -g
+RUN npm install next react react-dom
 WORKDIR /nextapp
 COPY . .
 COPY entrypoint.sh /usr/bin/
